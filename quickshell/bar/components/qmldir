@@ -1,0 +1,8 @@
+module components
+Bar 1.0 Bar.qml
+Clock 1.0 Clock.qml
+StopButton 1.0 StopButton.qml
+WorkspaceSwitcher 1.0 WorkspaceSwitcher.qml
+KeyboardLayout 1.0 KeyboardLayout.qml
+WifiButton 1.0 WifiButton.qml
+ActiveWindows 1.0 ActiveWindows.qml
