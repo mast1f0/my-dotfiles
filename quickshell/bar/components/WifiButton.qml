@@ -14,10 +14,25 @@ Item {
     function getIcon(){
 	return !Networking.wifiEnabled ? "󰤭" : "󰤨 "
     }
+    
+    function getCurrentWIFI(){
+	if (!Networking.devices || !Networking.devices.values)
+        return null
+
+	const wifi = Networking.devices.values.find(d => d.mode !== undefined)
+	
+	if(!wifi) return null
+
+	return wifi.networks.values.find(n => n.connected)
+    }
 
     function updateSSID(){
-	console.log(Networking.devices)
-       ssid =  Networking.connected ? Networking.activeConnection.name : "Disconnected"
+	const network = getCurrentWIFI()
+	if(network) {
+	    ssid = network.name
+	} else {
+	    ssid = "Disconnected"
+	}
     }
 
     Text {
