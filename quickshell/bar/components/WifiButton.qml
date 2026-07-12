@@ -10,11 +10,8 @@ Item {
     implicitWidth: label.implicitWidth
 
     property string  ssid: "Disconnected"
-    
-    function getIcon(){
-	return !Networking.wifiEnabled ? "󰤭" : "󰤨 "
-    }
-    
+    property var wifiDevice: null
+
     function getCurrentWIFI(){
 	if (!Networking.devices || !Networking.devices.values)
         return null
@@ -30,20 +27,63 @@ Item {
 	const network = getCurrentWIFI()
 	if(network) {
 	    ssid = network.name
-	} else {
-	    ssid = "Disconnected"
+	    return;
+	}
+	ssid = "Disconnected"
+    }
+
+	function findWifi() {
+	    wifiDevice = Networking.devices.values.find(
+		d => d.mode !== undefined
+	    ) ?? null
+	    if (wifiDevice)
+		wifiDevice.scannerEnabled = true
+	    updateSSID()
+	}
+
+
+    Connections {
+	target: Networking.devices
+
+
+	function onValuesChanged() {
+	    findWifi()
 	}
     }
+    
+    
+    Connections {
+	target: root.wifiDevice
+	enabled: root.wifiDevice !== null
+
+	function onConnectedChanged() {
+	    updateSSID()
+	}
+    }
+
+    Connections {
+	target: root.wifiDevice ? root.wifiDevice.networks : null
+
+	function onValuesChanged() {
+	    updateSSID()
+	}
+    }
+
+    Connections {
+	target: Networking
+
+	function onWifiEnabledChanged() {
+	    updateSSID()
+	}
+    }
+
+    Component.onCompleted: findWifi()
 
     Text {
 	id: label
 	anchors.centerIn: parent 
-	text: getIcon() + "   " + ssid
+	text: (Networking.wifiEnabled ? "󰤨 " : "󰤭") + "   " + ssid
 	color: Config.colors.text
 	font.pixelSize: Config.text.fontSize
-    }
-
-    Component.onCompleted: {
-	updateSSID()
     }
 }
