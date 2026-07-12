@@ -6,6 +6,7 @@ var colors = {
     text: "#cdd6f4",
     activeWorkspace: "#45475a",
     hoverWorkspace: "#313244",
+    hover: "#313244"
 };
 
 var text = {
@@ -15,7 +16,7 @@ var text = {
 
 var bar = {
     height: 40,
-    radius: 16,
+    radius: 8,
     marginH: 10,
     padding: 8,
     spacing: 8,
