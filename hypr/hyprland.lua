@@ -19,7 +19,7 @@ hl.monitor({
     output   = "",
     mode     = "preferred",
     position = "auto",
-    scale    = "auto",
+    scale    = "1",
 })
 
 
@@ -106,7 +106,7 @@ hl.config({
 
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing = false,
-        layout = "dwindle",
+        layout = "dwindle", -- dwindle
     },
 
     decoration = {
@@ -168,6 +168,7 @@ hl.animation({ leaf = "workspaces",    enabled = true, speed = 6,   bezier = "de
 hl.config({
     dwindle = {
         preserve_split = true, -- You probably want this
+	force_split = 2,
     },
 })
 
