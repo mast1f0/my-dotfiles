@@ -3,4 +3,5 @@ import "components"
 
 Scope {
     Bar {}
+    MultiPanel {}
 }

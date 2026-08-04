@@ -60,6 +60,10 @@ PanelWindow {
 	    Clock {}
 
 	    Item { width: 30}
-        }
-    }
+
+	MultiPanelButton {}
+    } 
 }
+}
+
+

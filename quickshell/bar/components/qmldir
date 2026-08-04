@@ -6,3 +6,6 @@ WorkspaceSwitcher 1.0 WorkspaceSwitcher.qml
 KeyboardLayout 1.0 KeyboardLayout.qml
 WifiButton 1.0 WifiButton.qml
 ActiveWindows 1.0 ActiveWindows.qml
+MultiPanelButton 1.0 MultiPanelButton.qml
+MultiPanel 1.0 MultiPanel.qml
+singleton States 1.0 States.qml

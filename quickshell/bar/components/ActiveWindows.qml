@@ -15,7 +15,7 @@ RowLayout {
             id: windowButton
             required property var modelData
 
-            implicitHeight: 24
+	    implicitHeight: 24
             implicitWidth: Math.min(title.implicitWidth + 16, 180)
             radius: 8
 
